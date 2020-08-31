@@ -1,6 +1,5 @@
 import React from "react";
 import Logo from "../../components/Logo";
-import Inputs from "../../components/Inputs";
 import Button from "../../components/Button";
 
 import { Container, LeftSection, RightSection } from "./styles";
@@ -27,11 +26,29 @@ const SignUpPage: React.FC = () => {
         </div>
       </LeftSection>
       <RightSection>
-        <Inputs />
-        <Inputs />
-        <Inputs />
-        <Inputs />
+        <input type="text" placeholder="Nome" />
+        <input type="text" placeholder="E-mail" />
+        <input type="password" placeholder="Senha" />
+        <input type="text" placeholder="Whatsapp" />
+        <div className="input-group button">
+          <select name="" id="" className="first">
+            <option value="" selected disabled>
+              Cidade
+            </option>
+          </select>
+          <select name="" id="" className="second">
+            <option value="" selected disabled>
+              UF
+            </option>
+          </select>
+        </div>
         <Button title="Cadastrar" />
+        <div>
+          <Link to="/">
+            <FaArrowLeft />
+            <p>Voltar para home</p>
+          </Link>
+        </div>
       </RightSection>
     </Container>
   );

@@ -9,6 +9,7 @@ export const Container = styled.div`
     font-weight: bold;
     padding: 20px 40px;
     border-radius: 8px;
+    width: 100%;
     border: none;
     cursor: pointer;
   }
