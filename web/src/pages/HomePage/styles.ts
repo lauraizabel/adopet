@@ -18,16 +18,19 @@ export const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   > div {
     display: flex;
     align-items: center;
   }
-  > div a h1 {
+
+  .login {
     text-decoration: none;
     margin-left: 20px;
     font-size: 24px;
     font-weight: 500;
-
+    border: 0;
+    cursor: pointer;
     @media (max-width: 680px) {
       font-size: 24px;
     }
