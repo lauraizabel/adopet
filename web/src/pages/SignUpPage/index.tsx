@@ -42,7 +42,9 @@ const SignUpPage: React.FC = () => {
             </option>
           </select>
         </div>
-        <Button title="Cadastrar" />
+        <Link to="/perfil">
+          <Button title="Cadastrar" />
+        </Link>
         <div>
           <Link to="/">
             <FaArrowLeft />

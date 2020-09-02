@@ -5,8 +5,6 @@ export default class PetsControllers {
   async show(req: Request, res: Response) {
     const pets = await db("pets").select("*");
 
-    console.log(pets);
-
     return res.send();
   }
 

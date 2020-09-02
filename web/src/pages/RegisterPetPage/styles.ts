@@ -3,9 +3,10 @@ import styled from "styled-components";
 export const Container = styled.div`
   width: 70%;
   margin: 7vh auto;
-  padding: 50px;
+  padding: 100px 100px;
   box-sizing: content-box;
   box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
+
   @media (min-width: 768px) {
     max-width: 800px;
     height: 350px;
@@ -50,6 +51,7 @@ export const LeftSection = styled.div`
 export const RightSection = styled.form`
   display: flex;
   flex-direction: column;
+
   > input {
     margin-top: 8px;
     border-radius: 8px;
@@ -58,18 +60,21 @@ export const RightSection = styled.form`
     font-size: 16px;
     outline: none;
   }
+
   > div a {
     margin-top: 20px;
     display: flex;
     align-items: center;
   }
+
   > div a svg {
     margin-right: 5px;
     color: #a85252;
     width: 16px;
     height: 16px;
   }
-  .input-group select {
+
+  .input select {
     margin-top: 8px;
     border-radius: 8px;
     border: 1px solid #dcdce5;
@@ -78,11 +83,20 @@ export const RightSection = styled.form`
     font-size: 16px;
     outline: none;
   }
-  .input-group {
+
+  .input {
     display: grid;
-    grid-template-columns: 65% 30%;
-    gap: 18px;
+    grid-template-columns: 80% 15%;
+    gap: 5%;
   }
+
+  .input button {
+    border: 1px solid #dcdce5;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 8px;
+  }
+
   .button {
     margin-bottom: 10px;
   }
