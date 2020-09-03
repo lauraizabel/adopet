@@ -5,8 +5,10 @@ export async function up(knex: Knex) {
     table.increments("id").primary();
     table.string("type").notNullable(); //dog, cat, etc
     table.string("name").notNullable();
+
     table.integer("age");
     table.string("features").notNullable();
+    table.string("image").notNullable();
 
     table
       .integer("user_id")

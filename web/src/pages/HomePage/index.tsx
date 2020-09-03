@@ -73,6 +73,7 @@ const HomePage: React.FC = () => {
           label="Senha"
           variant="outlined"
           className={classes.inputs}
+          type="password"
         />
         <Button title="Entrar" />
       </form>

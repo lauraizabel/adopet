@@ -1,21 +1,41 @@
 import { Response, Request } from "express";
 import db from "../database/connection";
+import { hash } from "bcryptjs";
 
 export default class UsersController {
-  async create(req: Request, res: Response) {
-    const { name, avatar, whatsapp, city, uf, adress } = req.body;
+  async show(req: Request, res: Response) {
+    const users = await db("users").select("*");
 
-    await db("users").insert({
+    return res.json(users);
+  }
+
+  async create(req: Request, res: Response) {
+    const { name, email, password, whatsapp, city, uf } = req.body;
+
+    const user = {
       name,
-      avatar,
+      email,
+      password,
       whatsapp,
       city,
       uf,
-      adress,
+    };
+
+    const hashedPassword = await hash(user.password, 8);
+
+    await db("users").insert({
+      name,
+      email,
+      password: hashedPassword,
+      whatsapp,
+      city,
+      uf,
     });
 
-    return res.send();
+    delete user.password;
+    return res.json(user);
   }
+
   async delete(req: Request, res: Response) {
     const { id } = req.params;
 
