@@ -7,7 +7,7 @@ export const Container = styled.div`
     font-family: "Roboto";
     font-size: 18px;
     font-weight: bold;
-    padding: 20px 40px;
+    padding: 16px 40px;
     border-radius: 8px;
     width: 100%;
     border: none;
@@ -21,14 +21,14 @@ export const Container = styled.div`
   @media (max-width: 900px) {
     > button {
       font-size: 14px;
-      padding: 16px 40px;
+      padding: 14px 40px;
     }
   }
 
   @media (max-width: 360px) {
     > button {
       font-size: 14px;
-      padding: 16px 20px;
+      padding: 14px 20px;
     }
   }
 `;
