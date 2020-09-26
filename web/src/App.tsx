@@ -7,6 +7,7 @@ import SignUpPage from "./pages/SignUpPage";
 import ShowProfilePage from "./pages/ShowProfilePage";
 import RegisterPetPage from "./pages/RegisterPetPage";
 import ShowPetsPage from "./pages/ShowPetsPage";
+import LoginPage from "./pages/LoginPage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Switch>
         <Route path="/" exact={true} component={HomePage} />
         <Route path="/cadastrar" exact={true} component={SignUpPage} />
+        <Route path="/entrar" exact={true} component={LoginPage} />
         <Route path="/perfil/:id" exact={true} component={ShowProfilePage} />
         <Route
           path="/perfil/:id/cadastrar-pet"
