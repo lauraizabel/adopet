@@ -14,7 +14,10 @@ interface Login {
 
 const schema = yup.object().shape({
   email: yup.string().email("E-mail inválido.").required("E-mail obrigatório."),
-  password: yup.string().min(6),
+  password: yup
+    .string()
+    .required("Senha obrigatória.")
+    .min(6, "Senha deve conter mais de 6 caracteres."),
 });
 
 const LoginPage: React.FC = () => {
@@ -39,10 +42,10 @@ const LoginPage: React.FC = () => {
 
             <p>Senha</p>
             <input type="password" name="password" ref={register} />
+            <p className="typeError">{errors.password?.message}</p>
             <Link to="/">
               <p className="password">Esqueceu sua senha?</p>
             </Link>
-            <p>{errors.password?.message}</p>
             <Button type="submit" title="Entrar"></Button>
           </form>
         </ContainerForm>
