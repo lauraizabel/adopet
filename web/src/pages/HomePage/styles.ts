@@ -1,13 +1,8 @@
 import styled from "styled-components";
-import bg from "./bg.svg";
 
 export const Container = styled.div`
   height: 100vh;
-  @media (max-width: 680px) {
-    background-image: url(${bg});
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
+  overflow-y: none;
 `;
 
 export const Header = styled.header`
@@ -41,8 +36,9 @@ export const ContentText = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-family: "Patrick Hand";
 
+  font-family: "Patrick Hand";
+  overflow: none;
   > div {
     top: 200px;
     position: absolute;
@@ -67,7 +63,6 @@ export const ContentText = styled.div`
       margin-top: 25px;
     }
   }
-
   > img {
     margin-left: 40px;
     width: 700px;
@@ -98,10 +93,16 @@ export const ContentText = styled.div`
   }
 
   @media (max-width: 680px) {
+    flex-direction: column;
     > img {
-      display: none;
+      bottom: 20px;
+      width: 90%;
+      position: relative;
     }
+
     > div {
+      top: 0;
+      position: relative;
       display: flex;
       width: 100%;
       text-align: center;
