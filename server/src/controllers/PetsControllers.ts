@@ -1,6 +1,5 @@
 import { Response, Request } from "express";
 import db from "../database/connection";
-import { hash } from "bcrypt";
 
 export default class PetsControllers {
   async show(req: Request, res: Response) {
@@ -29,7 +28,7 @@ export default class PetsControllers {
 
     const parsedFeatures = String(features)
       .split(",")
-      .map((item) => String(item.trim()));
+      .map(item => String(item.trim()));
 
     const pet = {
       type,
@@ -48,7 +47,7 @@ export default class PetsControllers {
   async delete(req: Request, res: Response) {
     const { id } = req.params;
 
-    const findUser = await db("pets").where({ id: id }).del();
+    const findUser = await db("pets").where({ id }).del();
 
     if (!findUser) return res.send("Animal não encontrado");
 
