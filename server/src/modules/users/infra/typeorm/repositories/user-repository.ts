@@ -1,14 +1,16 @@
+import { Repository } from "typeorm";
+
 import { ICreateUserDTO } from "@modules/users/dtos/ICreateUserDTO";
 import IUserRepository from "@modules/users/repositories/IUserRepository";
-import { getRepository, Repository } from "typeorm";
+import { getTypeORMConnection } from "@shared/infra/typeorm/connection";
 import User from "../entity/user";
 
 class UserRepository implements IUserRepository {
-  private ormRepository: Repository<User>;
-
-  constructor() {
-    this.ormRepository = getRepository(User);
-  }
+  constructor(
+    private ormRepository: Repository<User> = getTypeORMConnection().getRepository(
+      User,
+    ),
+  ) {}
 
   public async create(userData: ICreateUserDTO): Promise<User> {
     const user = this.ormRepository.create(userData);
