@@ -1,21 +1,16 @@
 import { ConnectionOptions } from "typeorm";
 
 const ormConfig: ConnectionOptions = {
-  name: "development",
+  name: "default",
   type: "postgres",
   host: process.env.HOST,
   port: Number(process.env.PORT),
-  username: process.env.USER,
+  username: process.env.USER_NAME,
   password: process.env.PASSWORD,
   database: process.env.DATABASE,
+  entities: ["./src/modules/*/infra/typeorm/entity/*.ts"],
   migrations: ["./src/shared/infra/typeorm/migrations/*.ts"],
-  logging: true,
-  ssl: true,
-  extra: {
-    ssl: {
-      rejectUnauthorized: false,
-    },
-  },
+  logging: false,
   synchronize: true,
 };
 

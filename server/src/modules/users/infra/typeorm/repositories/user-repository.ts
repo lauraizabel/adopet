@@ -6,11 +6,11 @@ import { getTypeORMConnection } from "@shared/infra/typeorm/connection";
 import User from "../entity/user";
 
 class UserRepository implements IUserRepository {
-  constructor(
-    private ormRepository: Repository<User> = getTypeORMConnection().getRepository(
-      User,
-    ),
-  ) {}
+  private ormRepository: Repository<User>;
+
+  constructor() {
+    this.ormRepository = getTypeORMConnection().getRepository(User);
+  }
 
   public async create(userData: ICreateUserDTO): Promise<User> {
     const user = this.ormRepository.create(userData);

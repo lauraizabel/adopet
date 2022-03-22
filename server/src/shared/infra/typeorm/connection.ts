@@ -10,16 +10,8 @@ import {
 export const getTypeORMConnection = (
   connectionName = process.env.NODE_ENV,
 ): Connection => {
-  console.log("Oi");
+  console.log("tipo da conexão");
   return getConnection(connectionName);
-};
-
-export const createTypeORMConnection = async (
-  connectionName = process.env.NODE_ENV,
-): Promise<Connection> => {
-  if (existsConnection(connectionName))
-    return getTypeORMConnection(connectionName);
-  return createConnection({ ...ormConfig });
 };
 
 const existsConnection = (connectionName): boolean => {
@@ -29,6 +21,14 @@ const existsConnection = (connectionName): boolean => {
   } catch {
     return false;
   }
+};
+
+export const createTypeORMConnection = async (
+  connectionName = process.env.NODE_ENV,
+): Promise<Connection> => {
+  if (existsConnection(connectionName))
+    return getTypeORMConnection(connectionName);
+  return createConnection({ ...ormConfig });
 };
 
 export const getRepository = async <T>(
