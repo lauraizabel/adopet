@@ -10,7 +10,6 @@ import {
 export const getTypeORMConnection = (
   connectionName = process.env.NODE_ENV,
 ): Connection => {
-  console.log("tipo da conexão");
   return getConnection(connectionName);
 };
 
