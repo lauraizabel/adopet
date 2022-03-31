@@ -50,7 +50,8 @@
     "@typescript-eslint/camelcase": "off",
     "dot-notation": "off",
     "no-unused-expressions": "off",
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+    "consistent-return": "off"
   },
   "settings": {
     "import/resolver": {
