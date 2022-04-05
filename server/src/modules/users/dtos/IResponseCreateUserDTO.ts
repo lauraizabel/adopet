@@ -1,4 +1,4 @@
-export interface IResponseCreateUserDTO {
+export interface IResponseUserDTO {
   user: {
     name: string;
     email: string;

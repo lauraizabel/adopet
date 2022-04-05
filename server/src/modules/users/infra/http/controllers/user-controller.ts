@@ -1,6 +1,8 @@
 import { NextFunction, Request, Response } from "express";
 import { container } from "tsyringe";
 import CreateUserService from "@modules/users/services/create-user-service";
+import LoginService from "@modules/users/services/login-service";
+import UpdateUserService from "@modules/users/services/update-user-service";
 
 export default class UserController {
   public async create(
@@ -19,7 +21,50 @@ export default class UserController {
         phone,
       });
 
-      return res.status(content.statusCode).json({ content });
+      return res.status(204).json({ content });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  public async login(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<Response | undefined> {
+    try {
+      const { email, password } = req.body;
+      const login = container.resolve(LoginService);
+      const content = await login.execute({
+        email,
+        password,
+      });
+      return res.status(200).json({ content });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  public async edit(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<Response | undefined> {
+    try {
+      const { id } = req.user;
+      const { email, name, phone, password, oldPassword } = req.body;
+      const updateUser = container.resolve(UpdateUserService);
+
+      const content = await updateUser.execute({
+        email,
+        name,
+        password,
+        phone,
+        oldPassword,
+        id,
+      });
+
+      return res.status(200).json({ content });
     } catch (error) {
       next(error);
     }
