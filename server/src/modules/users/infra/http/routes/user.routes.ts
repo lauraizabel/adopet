@@ -10,6 +10,6 @@ userRouter.post("/login", userController.login);
 
 userRouter.use(ensureAuthenticated);
 
-userRouter.put("/user");
+userRouter.put("/user", userController.edit);
 
 export default userRouter;

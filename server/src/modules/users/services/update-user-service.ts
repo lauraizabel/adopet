@@ -9,7 +9,6 @@ import IHashProvider from "../providers/Hash/models/IHashProvider";
 import { CodeHttp } from "@shared/utils/code-http";
 import { IDefaultResponseDTO } from "@shared/dto/IDefaultResponseDTO";
 import { IUpdateUserDTO } from "../dtos/IUpdateUserDTO";
-import User from "../infra/typeorm/entity/user";
 
 @injectable()
 class UpdateUserService {
@@ -49,9 +48,12 @@ class UpdateUserService {
       if (!comparePass) {
         throw new AppError("Old password invalid", CodeHttp.BAD_REQUEST);
       }
-
-      const hashedPassword = await this.hashProvider.generate(password);
     }
+    // TODO - melhorar essa parte da criacao de nova senha
+    const newPass =
+      oldPassword && password
+        ? await this.hashProvider.generate(password)
+        : password;
 
     const {
       name: _name,
@@ -60,7 +62,7 @@ class UpdateUserService {
     } = await this.userRepository.create({
       name,
       email,
-      password: hashedPassword,
+      password: newPass,
       created_at: new Date(),
       updated_at: new Date(),
       phone,
