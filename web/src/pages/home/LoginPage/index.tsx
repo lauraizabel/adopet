@@ -1,13 +1,11 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Container, LeftSection, RightSection, ContainerForm } from "./styles";
 import adopetimg from "./adopetimg.jpg";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers";
 import * as yup from "yup";
-import Button from "../../components/Button";
+import Button from "../../../components/Button";
 import { Link } from "react-router-dom";
-
-import AuthContext from "../../context/AuthContext";
 
 interface Login {
   email: string;
@@ -28,8 +26,6 @@ const LoginPage: React.FC = () => {
   });
 
   const onSubmit = (data: Login) => console.log(data);
-
-  const auth = useContext(AuthContext);
 
   return (
     <Container>

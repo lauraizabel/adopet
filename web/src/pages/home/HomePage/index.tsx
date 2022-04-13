@@ -1,8 +1,8 @@
 import React from "react";
 import bg from "./bg.svg";
-import { Container, ContentText, Header } from "./styles";
-import Logo from "../../components/Logo";
-import Button from "../../components/Button";
+import { Container, ContentText, Header } from "../styles";
+import Logo from "../../../components/Logo";
+import Button from "../../../components/Button";
 import { Link } from "react-router-dom";
 
 const HomePage: React.FC = () => {

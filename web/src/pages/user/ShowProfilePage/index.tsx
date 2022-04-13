@@ -1,11 +1,11 @@
 import React from "react";
-
-import { Container, Header, GridCards } from "./styles";
-import Logo from "../../components/Logo";
-import Button from "../../components/Button";
-import CardRegisterAnimals from "../../components/CardRegisterAnimals";
 import { FiPower } from "react-icons/fi";
 import { Link } from "react-router-dom";
+
+import { Container, Header, GridCards } from "./styles";
+import Logo from "../../../components/Logo";
+import Button from "../../../components/Button";
+import CardRegisterAnimals from "../../../components/CardRegisterAnimals";
 
 const ShowProfilePage: React.FC = () => {
   return (

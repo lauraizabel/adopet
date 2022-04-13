@@ -2,10 +2,10 @@ import React from "react";
 
 import { Container, Header, GridAnimals } from "./styles";
 
-import Logo from "../../components/Logo";
-import CardAnimals from "../../components/CardAnimals";
+import Logo from "../../../components/Logo";
+import CardAnimals from "../../../components/CardAnimals";
 import { Link } from "react-router-dom";
-import Button from "../../components/Button";
+import Button from "../../../components/Button";
 
 const ShowPetsPage: React.FC = () => {
   return (
