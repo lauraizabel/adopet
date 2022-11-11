@@ -5,6 +5,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
+import { IsString, IsPhoneNumber, IsEmail } from "class-validator";
 
 @Entity()
 class User {
@@ -12,15 +13,19 @@ class User {
   id?: number;
 
   @Column()
+  @IsString()
   name: string;
 
   @Column()
+  @IsEmail()
   email: string;
 
   @Column()
+  @IsString()
   password: string;
 
   @Column()
+  @IsPhoneNumber()
   phone: string;
 
   @CreateDateColumn()
