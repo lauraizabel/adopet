@@ -1,9 +1,9 @@
 import { Repository } from "typeorm";
 
 import Animal from "@modules/animals/infra/typeorm/entity/animal";
-import IAnimalRepository from "@modules/animals/repositories/IAnimalRepository";
+import IAnimalRepository from "@modules/animals/interfaces/repositories/IAnimalRepository";
 import { getTypeORMConnection } from "@shared/infra/typeorm/connection";
-import { ICreateAnimalDTO } from "@modules/animals/dtos/ICreateAnimalDTO";
+import { ICreateAnimalDTO } from "@modules/animals/interfaces/dtos/ICreateAnimalDTO";
 
 class AnimalRepository implements IAnimalRepository {
   private ormRepository: Repository<Animal>;

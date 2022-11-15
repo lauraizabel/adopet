@@ -1,4 +1,4 @@
-import { ICreateAnimalDTO } from "@modules/animals/dtos/ICreateAnimalDTO";
+import { ICreateAnimalDTO } from "@modules/animals/interfaces/dtos/ICreateAnimalDTO";
 import Animal from "@modules/animals/infra/typeorm/entity/animal";
 
 export default interface IAnimalRepository {
