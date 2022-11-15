@@ -1,9 +1,9 @@
 import { injectable, inject } from "tsyringe";
 
-import IUserRepository from "@modules/users/repositories/IUserRepository";
+import IUserRepository from "@modules/users/interfaces/repositories/IUserRepository";
 
-import { ICreateUserDTO } from "../dtos/ICreateUserDTO";
-import { IResponseUserDTO } from "../dtos/IResponseCreateUserDTO";
+import { ICreateUserDTO } from "../interfaces/dtos/ICreateUserDTO";
+import { IResponseUserDTO } from "../interfaces/dtos/IResponseCreateUserDTO";
 
 import AppError from "@shared/errors/AppError";
 import IHashProvider from "../providers/Hash/models/IHashProvider";
@@ -44,6 +44,7 @@ class CreateUserService {
       created_at: new Date(),
       updated_at: new Date(),
       phone,
+      animals: [],
     });
 
     const user = {

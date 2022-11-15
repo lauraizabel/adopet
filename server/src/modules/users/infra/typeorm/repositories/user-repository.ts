@@ -1,7 +1,7 @@
 import { Repository } from "typeorm";
 
-import { ICreateUserDTO } from "@modules/users/dtos/ICreateUserDTO";
-import IUserRepository from "@modules/users/repositories/IUserRepository";
+import { ICreateUserDTO } from "@modules/users/interfaces/dtos/ICreateUserDTO";
+import IUserRepository from "@modules/users/interfaces/repositories/IUserRepository";
 import { getTypeORMConnection } from "@shared/infra/typeorm/connection";
 import User from "../entity/user";
 

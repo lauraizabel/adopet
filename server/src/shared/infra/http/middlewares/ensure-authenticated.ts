@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-
+import StatusCode from "http-status-code";
 import auth from "@config/auth";
 import AppError from "@shared/errors/AppError";
 import { verify } from "jsonwebtoken";
@@ -38,7 +38,7 @@ const ensureAuthenticated = (
 
     next();
   } catch (err) {
-    throw new AppError("Invalid JWT", 401);
+    throw new AppError("Invalid JWT", StatusCode.uNA);
   }
 };
 

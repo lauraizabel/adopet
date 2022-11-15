@@ -1,14 +1,14 @@
 import { injectable, inject } from "tsyringe";
 
-import IUserRepository from "@modules/users/repositories/IUserRepository";
+import IUserRepository from "@modules/users/interfaces/repositories/IUserRepository";
 
-import { IResponseUserDTO } from "../dtos/IResponseCreateUserDTO";
+import { IResponseUserDTO } from "../interfaces/dtos/IResponseCreateUserDTO";
 
 import AppError from "@shared/errors/AppError";
 import IHashProvider from "../providers/Hash/models/IHashProvider";
 import { CodeHttp } from "@shared/utils/code-http";
 import { IDefaultResponseDTO } from "@shared/dto/IDefaultResponseDTO";
-import { IUpdateUserDTO } from "../dtos/IUpdateUserDTO";
+import { IUpdateUserDTO } from "../interfaces/dtos/IUpdateUserDTO";
 
 @injectable()
 class UpdateUserService {

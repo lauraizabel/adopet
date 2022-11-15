@@ -1,6 +1,6 @@
 import { Router } from "express";
-import UserController from "@modules/users/infra/http/controllers/user-controller";
-import ensureAuthenticated from "../middlewares/ensure-authenticated";
+import UserController from "@modules/users/infra/http/controllers/user.controller";
+import ensureAuthenticated from "@shared/infra/http/middlewares/ensure-authenticated";
 
 const userRouter = Router();
 const userController = new UserController();

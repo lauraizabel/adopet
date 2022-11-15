@@ -4,9 +4,9 @@ import { sign } from "jsonwebtoken";
 import { IDefaultResponseDTO } from "@shared/dto/IDefaultResponseDTO";
 import AppError from "@shared/errors/AppError";
 import { CodeHttp } from "@shared/utils/code-http";
-import { ILoginDTO, IResponseLoginDTO } from "../dtos/ILoginDTO";
+import { ILoginDTO, IResponseLoginDTO } from "../interfaces/dtos/ILoginDTO";
 import IHashProvider from "../providers/Hash/models/IHashProvider";
-import IUserRepository from "../repositories/IUserRepository";
+import IUserRepository from "../interfaces/repositories/IUserRepository";
 import auth from "@config/auth";
 
 @injectable()
