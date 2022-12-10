@@ -27,12 +27,14 @@ export default class UserController {
       email,
       password,
     });
+
     return res.status(200).json({ content });
   }
 
   public async edit(req: Request, res: Response): Promise<Response> {
     const { id } = req.user;
     const { email, name, phone, password, oldPassword } = req.body;
+
     const updateUser = container.resolve(UpdateUserService);
 
     const content = await updateUser.execute({

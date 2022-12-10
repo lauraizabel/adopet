@@ -9,6 +9,7 @@ import IHashProvider from "../providers/Hash/models/IHashProvider";
 import { CodeHttp } from "@shared/utils/code-http";
 import { IDefaultResponseDTO } from "@shared/dto/IDefaultResponseDTO";
 import { IUpdateUserDTO } from "../interfaces/dtos/IUpdateUserDTO";
+import User from "@modules/users/infra/typeorm/entity/user";
 
 @injectable()
 class UpdateUserService {
@@ -27,7 +28,8 @@ class UpdateUserService {
     phone,
     oldPassword,
   }: IUpdateUserDTO): Promise<IDefaultResponseDTO<IResponseUserDTO>> {
-    const existUser = await this.userRepository.findById(Number(id));
+    const userId = Number(id);
+    const existUser = await this.userRepository.findById(userId);
 
     if (!existUser) {
       throw new AppError("User does not exist", CodeHttp.BAD_REQUEST);
@@ -35,7 +37,7 @@ class UpdateUserService {
 
     const existUserWithEmail = await this.userRepository.findByEmail(email);
 
-    if (existUserWithEmail) {
+    if (existUserWithEmail && existUser.email !== email) {
       throw new AppError("E-mail alredy exists", CodeHttp.BAD_REQUEST);
     }
 
@@ -49,17 +51,16 @@ class UpdateUserService {
         throw new AppError("Old password invalid", CodeHttp.BAD_REQUEST);
       }
     }
-    // TODO - melhorar essa parte da criacao de nova senha
+
+    // TODO - find new method to improve this part
+
     const newPass =
       oldPassword && password
         ? await this.hashProvider.generate(password)
-        : password;
+        : existUser.password;
 
-    const {
-      name: _name,
-      phone: _phone,
-      email: _email,
-    } = await this.userRepository.create({
+    await this.userRepository.update({
+      id: userId,
       name,
       email,
       password: newPass,
@@ -67,11 +68,12 @@ class UpdateUserService {
       updated_at: new Date(),
       phone,
     });
+    const newUser = (await this.userRepository.findById(userId)) as User;
 
     const user = {
-      name: _name,
-      phone: _phone,
-      email: _email,
+      name: newUser.name,
+      phone: newUser.phone,
+      email: newUser.email,
     };
 
     return { content: { user }, status: "success" };

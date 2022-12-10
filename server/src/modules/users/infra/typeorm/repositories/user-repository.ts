@@ -1,4 +1,5 @@
 import { Repository } from "typeorm";
+import { QueryDeepPartialEntity } from "typeorm/query-builder/QueryPartialEntity";
 
 import { ICreateUserDTO } from "@modules/users/interfaces/dtos/ICreateUserDTO";
 import IUserRepository from "@modules/users/interfaces/repositories/IUserRepository";
@@ -31,9 +32,8 @@ class UserRepository implements IUserRepository {
     return this.ormRepository.findOne({ id });
   }
 
-  public async update(user: User): Promise<User | undefined> {
+  public async update(user: QueryDeepPartialEntity<User>): Promise<void> {
     await this.ormRepository.update(Number(user.id), user);
-    return this.ormRepository.findOne({ id: user.id });
   }
 }
 

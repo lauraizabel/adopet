@@ -6,6 +6,8 @@ const errorMiddleware: ErrorRequestHandler = (
   _: Request,
   response: Response,
 ) => {
+  console.log({ error });
+
   if (error instanceof AppError) {
     const { statusCode, message } = error;
     return response
@@ -13,9 +15,13 @@ const errorMiddleware: ErrorRequestHandler = (
       .json({ status: "error", content: { message } });
   }
 
-  return response
-    .status(500)
-    .json({ status: "error", content: { message: "Internal server error" } });
+  return response.status(500).json({
+    status: "error",
+    content: {
+      message: "Internal server error",
+      error: (error as any).toString(),
+    },
+  });
 };
 
 export default errorMiddleware;

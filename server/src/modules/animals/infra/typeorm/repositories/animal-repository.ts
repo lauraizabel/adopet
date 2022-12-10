@@ -19,6 +19,10 @@ class AnimalRepository implements IAnimalRepository {
     return animal;
   }
 
+  public async getAll(): Promise<Animal[]> {
+    return this.ormRepository.find();
+  }
+
   public async save(animal: Animal): Promise<Animal> {
     return this.ormRepository.save(animal);
   }

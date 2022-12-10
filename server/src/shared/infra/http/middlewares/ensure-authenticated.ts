@@ -7,7 +7,7 @@ import { verify } from "jsonwebtoken";
 interface ITokenPayload {
   iat: number;
   exp: number;
-  sub: string;
+  id: string;
 }
 
 const ensureAuthenticated = (
@@ -30,10 +30,10 @@ const ensureAuthenticated = (
 
     const decoded = verify(token, secret);
 
-    const { sub } = decoded as ITokenPayload;
+    const { id } = decoded as ITokenPayload;
 
     req.user = {
-      id: sub,
+      id,
     };
 
     next();
